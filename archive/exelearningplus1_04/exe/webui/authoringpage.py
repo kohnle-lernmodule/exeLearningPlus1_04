@@ -128,6 +128,11 @@ class AuthoringPage(RenderableResource):
             html += block.render(self.package.style)
 
         html += u'</div>\n'
+#modifications by lernmodule.net		
+        html += u'</form>\n'
+        html += u'<script type=\"text/javascript\" language=\"javascript\">doStart();</script>\n'
+#end modification		
+		
         html += common.footer()
 
         html = html.encode('utf8')
@@ -148,6 +153,11 @@ class AuthoringPage(RenderableResource):
         html += u'</style>\n'
         html += u'<script type="text/javascript" src="/scripts/common.js">'
         html += u'</script>\n'
+#modification by lernmodule.net		
+        html += u'<script type="text/javascript" src="/scripts/lernmodule_net.js">'
+        html += u'</script>\n'
+#end modification		
+	
         html += u'<script type="text/javascript" '
         html += u'src="/scripts/tinymce/jscripts/tiny_mce/tiny_mce.js">'
         html += u'</script>\n'

@@ -1,8 +1,8 @@
 /*******************************************************************************
-** 
+**
 ** Filename: SCOFunctions.js
 **
-** File Description: This file contains several JavaScript functions that are 
+** File Description: This file contains several JavaScript functions that are
 **                   used by the Sample SCOs contained in the Sample Course.
 **                   These functions encapsulate actions that are taken when the
 **                   user navigates between SCOs, or exits the Lesson.
@@ -44,20 +44,23 @@
 var startDate;
 var exitPageStatus;
 
+//added by lernmodule.net 
+var lm_scorm=false,loadPageStarted=false;
+//end added
 function loadPage()
 {
-   var result = doLMSInitialize();
-
-   var status = doLMSGetValue( "cmi.core.lesson_status" );
-
-   if (status == "not attempted")
-   {
-	  // the student is now attempting the lesson
-	  doLMSSetValue( "cmi.core.lesson_status", "incomplete" );
-   }
-
-   exitPageStatus = false;
-   startTimer();
+	if(loadPageStarted==false){	//added by lernmodule.net
+		loadPageStarted=true;	//added by lernmodule.net
+		var result = doLMSInitialize();
+		var status = doLMSGetValue( "cmi.core.lesson_status" );
+		if (status == "not attempted")
+		{
+		  // the student is now attempting the lesson
+		  doLMSSetValue( "cmi.core.lesson_status", "incomplete" );
+		}
+		exitPageStatus = false;
+		startTimer();
+	}
 }
 
 
@@ -88,15 +91,15 @@ function doBack()
 
    computeTime();
    exitPageStatus = true;
-   
+
    var result;
 
    result = doLMSCommit();
 
 	// NOTE: LMSFinish will unload the current SCO.  All processing
 	//       relative to the current page must be performed prior
-	//		 to calling LMSFinish.   
-   
+	//		 to calling LMSFinish.
+
    result = doLMSFinish();
 
 }
@@ -109,18 +112,18 @@ function doContinue( status )
    var mode = doLMSGetValue( "cmi.core.lesson_mode" );
 
    if ( mode != "review"  &&  mode != "browse" )
-   { 
+   {
       doLMSSetValue( "cmi.core.lesson_status", status );
    }
- 
+
    computeTime();
    exitPageStatus = true;
-   
+
    var result;
    result = doLMSCommit();
 	// NOTE: LMSFinish will unload the current SCO.  All processing
 	//       relative to the current page must be performed prior
-	//		 to calling LMSFinish.   
+	//		 to calling LMSFinish.
 
    result = doLMSFinish();
 
@@ -132,28 +135,28 @@ function doQuit()
 
    computeTime();
    exitPageStatus = true;
-   
+
    var result;
 
    result = doLMSCommit();
 
 	// NOTE: LMSFinish will unload the current SCO.  All processing
 	//       relative to the current page must be performed prior
-	//		 to calling LMSFinish.   
+	//		 to calling LMSFinish.
 
    result = doLMSFinish();
 }
 
 /*******************************************************************************
-** The purpose of this function is to handle cases where the current SCO may be 
-** unloaded via some user action other than using the navigation controls 
+** The purpose of this function is to handle cases where the current SCO may be
+** unloaded via some user action other than using the navigation controls
 ** embedded in the content.   This function will be called every time an SCO
 ** is unloaded.  If the user has caused the page to be unloaded through the
 ** preferred SCO control mechanisms, the value of the "exitPageStatus" var
 ** will be true so we'll just allow the page to be unloaded.   If the value
 ** of "exitPageStatus" is false, we know the user caused to the page to be
 ** unloaded through use of some other mechanism... most likely the back
-** button on the browser.  We'll handle this situation the same way we 
+** button on the browser.  We'll handle this situation the same way we
 ** would handle a "quit" - as in the user pressing the SCO's quit button.
 
 ** eXe team: we've added this doLMSSetValue here to get tracking working with Moodle
@@ -164,14 +167,15 @@ function unloadPage()
 {
 	if (exitPageStatus != true)
 	{
-		doLMSSetValue( "cmi.core.lesson_status", "completed" );
+		if(lm_scorm==false) //added by lernmodule.net
+			doLMSSetValue( "cmi.core.lesson_status", "completed" );
 		doQuit();
 	}
-
+	
 	// NOTE:  don't return anything that resembles a javascript
 	//		  string from this function or IE will take the
 	//		  liberty of displaying a confirm message box.
-	
+
 }
 
 /*******************************************************************************
@@ -189,7 +193,7 @@ function convertTotalSeconds(ts)
 
    // convert seconds to conform to CMITimespan type (e.g. SS.00)
    sec = Math.round(sec*100)/100;
-   
+
    var strSec = new String(sec);
    var strWholeSec = strSec;
    var strFractionSec = "";
@@ -199,13 +203,13 @@ function convertTotalSeconds(ts)
       strWholeSec =  strSec.substring(0, strSec.indexOf("."));
       strFractionSec = strSec.substring(strSec.indexOf(".")+1, strSec.length);
    }
-   
+
    if (strWholeSec.length < 2)
    {
       strWholeSec = "0" + strWholeSec;
    }
    strSec = strWholeSec;
-   
+
    if (strFractionSec.length)
    {
       strSec = strSec+ "." + strFractionSec;

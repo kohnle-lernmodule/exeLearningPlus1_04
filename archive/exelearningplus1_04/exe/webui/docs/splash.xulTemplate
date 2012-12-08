@@ -5,7 +5,7 @@
   ?>
   <window 
     id="MySecondWindow" 
-    title="eXe" 
+    title="eXelearningPlus" 
     onload="return ol()" onclose="return ex()" 
     width="600" height="300" screenX="200" screenY="300"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -71,7 +71,7 @@
 
       function olOpenWin()
       {
-          window.open(openUrl, "eXe");
+          window.open(openUrl, "eXelearningPlus");
           allowClose = 1
       }
 
@@ -85,7 +85,7 @@
           var pl = document.getElementById("loadPercent");
           pl.value = "(" + results[2] + ")"
           alert(results[2])
-          window.open(results[1], "eXe");
+          window.open(results[1], "eXelearningPlus");
           allowClose = 1
           setTimeout('olEnd()', 3000)
         }

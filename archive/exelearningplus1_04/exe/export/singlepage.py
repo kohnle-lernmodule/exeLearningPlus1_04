@@ -69,7 +69,10 @@ class SinglePage(Page):
         html += u"</div>\n"
 	html += self.renderLicense()
 	html += self.renderFooter()
-        html += u"</div>\n"
+	#modification by lernmodule.net
+	html += u"<script type=\"text/javascript\" language=\"javascript\">doStart();</script></body></html>\n"	
+	#end modification
+	html += u"</div>\n"
         html += u"</body></html>\n"
 	
 	return html
@@ -95,6 +98,9 @@ class SinglePage(Page):
         html += u"<meta http-equiv=\"Content-Type\" content=\"text/html; "
         html += u" charset=utf-8\" />\n";
         html += u'<script type="text/javascript" src="common.js"></script>\n'
+		#modification by lernmodule.net
+        html += u'<script type="text/javascript" src="lernmodule_net.js"></script>\n'
+		#end modification
         if for_print:
             # include extra print-script for onload bit 
             html += u'<script type="text/javascript">\n'

@@ -72,6 +72,9 @@ class WebsitePage(Page):
         html += u"<meta http-equiv=\"Content-Type\" content=\"text/html; "
         html += u" charset=utf-8\" />\n";
         html += u'<script type="text/javascript" src="common.js"></script>\n'
+#modification by lernmodule.net
+        html += u'<script type="text/javascript" src="lernmodule_net.js"></script>\n'
+#end modification
         html += u"</head>\n"
         html += u"<body>\n"
         html += u"<div id=\"content\">\n"
@@ -119,7 +122,11 @@ class WebsitePage(Page):
                 html += self.processInternalLinks(self.node.package,
                         block.renderView(style))
             html += u'</div>\n'     # iDevice div
-        
+
+#modification by lernmodule.net
+        html += u"<script type=\"text/javascript\" language=\"javascript\">doStart();</script>\n"
+#end modification       
+
         html += self.getNavigationLink(prevPage, nextPage)
         # writes the footer for each page 
         html += self.renderLicense()

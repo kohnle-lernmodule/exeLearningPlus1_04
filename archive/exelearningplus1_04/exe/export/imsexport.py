@@ -210,6 +210,9 @@ class IMSPage(Page):
         html += u"@import url(content.css);\n"
         html += u"</style>\n"
         html += u'<script type="text/javascript" src="common.js"></script>\n'
+#modification by lernmodule.net		
+        html += u'<script type="text/javascript" src="lernmodule_net.js"></script>\n'
+#end modification		
         html += u"</head>\n"
         html += u"<body>\n"
         html += u"<div id=\"outer\">\n"
@@ -237,6 +240,9 @@ class IMSPage(Page):
         html += u"</div>\n"
         html += self.renderLicense()
         html += self.renderFooter()
+#modification by lernmodule.net		
+        html += u"<script type=\"text/javascript\" language=\"javascript\">doStart();</script></body></html>\n"
+#end modification
         html += u"</div>\n"
         html += u"</body></html>\n"
         html = html.encode('utf8')
@@ -310,8 +316,9 @@ class IMSExport(object):
         manifest = Manifest(self.config, outputDir, package, self.pages)
         manifest.save()
         
-        # Copy the scripts
+        # Copy the scripts - with modification by lernmodule.net
         self.scriptsDir.copylist(('libot_drag.js',
+                                  'lernmodule_net.js',
                                   'common.js'), outputDir)
         
         self.schemasDir.copylist(('imscp_v1p1.xsd',

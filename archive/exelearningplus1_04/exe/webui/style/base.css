@@ -275,3 +275,19 @@ div.tleft {
 div.node { page-break-after: always; }
 }
 
+
+.FillIn,.ScormCloze{
+	line-height:2.1em;
+}
+.FillIn select{
+	height:1.7em;
+	vertical-align:middle;
+	padding:0px;
+	margin:0px;
+}
+.ScormCloze input{
+	vertical-align:middle;
+}
+.ScormMultiSelect input{
+	margin:1px;
+}

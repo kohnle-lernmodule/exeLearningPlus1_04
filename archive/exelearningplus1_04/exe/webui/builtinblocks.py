@@ -43,6 +43,11 @@ from exe.webui.appletblock            import AppletBlock
 from exe.webui.flashmovieblock        import FlashMovieBlock
 from exe.webui.quiztestblock          import QuizTestBlock
 
+#modification by lernmodule.net
+from exe.webui.scormdropdownblock     import ScormDropDownBlock
+from exe.webui.scormclozeblock        import ScormClozeBlock
+from exe.webui.scormmultiselectblock  import ScormMultiSelectBlock
+#end modification
 # ===========================================================================
 
 

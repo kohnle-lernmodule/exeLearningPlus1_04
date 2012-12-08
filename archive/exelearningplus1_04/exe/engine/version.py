@@ -27,11 +27,11 @@ import re
 project        = "exe"
 release        = "1.04.1"
 revision       = "$Revision: 3534 $"[11:-2]
-# if it is available, get the SVN revision
-try:
-    from version_svn import revision
-except ImportError:
-    pass
+# if it is available, get the SVN revision - removed by lernmodule.net
+#try:
+#    from version_svn import revision
+#except ImportError:
+#    pass
 
 # avoid using ':' in pathnames built from revision
 revision = revision.replace(':', '-')
