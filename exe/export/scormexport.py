@@ -93,13 +93,14 @@ class Manifest(object):
         if filename == "imsmanifest.xml":
             out.write(self.createXML().encode('utf8'))
         out.close()
-        if self.scormType == "scorm1.2":
-            templateFilename = self.config.xulDir/'templates'/'imslrm.xml'
-            template = open(templateFilename, 'rb').read()
-            xml = self.createMetaData(template)
-            out = open(self.outputDir/'imslrm.xml', 'wb')
-            out.write(xml.encode('utf8'))
-            out.close()
+		#until createXML removed by lernmodule.net because not compatible for example with ilias
+        #if self.scormType == "scorm1.2":
+        #    templateFilename = self.config.xulDir/'templates'/'imslrm.xml'
+        #    template = open(templateFilename, 'rb').read()
+        #    xml = self.createMetaData(template)
+        #    out = open(self.outputDir/'imslrm.xml', 'wb')
+        #    out.write(xml.encode('utf8'))
+        #    out.close()
     
     def createXML(self):
         """
@@ -108,7 +109,7 @@ class Manifest(object):
         manifestId = unicode(self.idGenerator.generate())
         orgId      = unicode(self.idGenerator.generate())
        
-        # Add the namespaces 
+        # Add the namespaces; lernmodule.net removed imslrm.xml because not compatible with ilias
         
         if self.scormType == "scorm1.2":
             xmlStr  = u'<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -128,8 +129,8 @@ class Manifest(object):
             xmlStr += u"<metadata> \n"
             xmlStr += u" <schema>ADL SCORM</schema> \n"
             xmlStr += u" <schemaversion>1.2</schemaversion> \n"
-            xmlStr += u" <adlcp:location>imslrm.xml"
-            xmlStr += u"</adlcp:location> \n"
+            #xmlStr += u" <adlcp:location>imslrm.xml"
+            #xmlStr += u"</adlcp:location> \n"
             xmlStr += u"</metadata> \n"
         elif self.scormType == "scorm2004":
             xmlStr  = u'<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -226,7 +227,7 @@ class Manifest(object):
 
         # FIXME force dependency on popup_bg.gif on every page
         # because it isn't a "resource" so we can't tell which
-        # pages will use it from content.css
+        # pages will use it from content.css - modification by lernmodule.net in line 251
         if self.scormType == "commoncartridge":
             self.resStr += """href="%s">
     <file href="%s"/>
@@ -248,6 +249,7 @@ class Manifest(object):
     <file href="content.css"/>
     <file href="popup_bg.gif"/>
     <file href="APIWrapper.js"/>
+	<file href="lernmodule_net.js"/>
     <file href="SCOFunctions.js"/>""" % filename
         self.resStr += "\n"
         fileStr = ""
@@ -298,6 +300,9 @@ class ScormPage(Page):
         html += u"@import url(content.css);\n"
         html += u"</style>\n"
         html += u'<script type="text/javascript" src="common.js"></script>\n'
+#modification by lernmodule.net
+        html += u'<script type="text/javascript" src="lernmodule_net.js"></script>\n'
+#end modification
         html += u"</head>\n"
         if self.scormType == 'commoncartridge':
             html += u"<body>"
@@ -330,14 +335,21 @@ class ScormPage(Page):
 
         html += u"</div>\n"
         html += u"</div>\n"
-        if self.node.package.scolinks:
-            html += u'<div class="previousnext">'
-            html += u'<a class="previouslink" '
-            html += u'href="javascript: goBack();">%s</a> | <a class="nextlink" ' % _('Previous')
-            html += u'href="javascript: goForward();">%s</a>' % _('Next')
-            html += u'</div>'
+#modification by lernmodule.net because it is not SCORM-conform
+#        if self.node.package.scolinks:
+#            html += u'<div class="previousnext">'
+#            html += u'<a class="previouslink" '
+#            html += u'href="javascript: goBack();">%s</a> | <a class="nextlink" ' % _('Previous')
+#            html += u'href="javascript: goForward();">%s</a>' % _('Next')
+#            html += u'</div>'
+#end modification
         html += self.renderLicense()
         html += self.renderFooter()
+
+#modification by lernmodule.net		
+        html += u"<script type=\"text/javascript\" language=\"javascript\">doStart();</script>\n"
+#end modification
+
         html += u"</body></html>\n"
         html = html.encode('utf8')
         return html
@@ -428,12 +440,14 @@ class ScormExport(object):
         # copy the package's resource files
         package.resourceDir.copyfiles(outputDir)
 
-        # Copy the scripts
+        # Copy the scripts; lernmodule.net added lernmodule_net.js
         if self.scormType == "commoncartridge":
             self.scriptsDir.copylist(('libot_drag.js',
+                                      'lernmodule_net.js', 
                                       'common.js'), outputDir)
         else:
-            self.scriptsDir.copylist(('APIWrapper.js', 
+            self.scriptsDir.copylist(('APIWrapper.js', 							
+                                      'lernmodule_net.js', 
                                       'SCOFunctions.js', 
                                       'libot_drag.js',
                                       'common.js'), outputDir)

@@ -133,8 +133,8 @@ msgid ""
 "click on the Hide/Show Word button below.</p>"
 msgstr ""
 "<p>Tragen Sie den Text für die Lückenübung in das Eingabefenster ein oder\n"
-" kopieren Sie ihn aus einer anderen Datei (ausschneiden & einfügen). </p><p>\n"
-"Wörter, die verborgen werden sollen klicken Sie danach doppelt an und klicken auf den Button <i>Wort verbergen/anzeigen</p>."
+" kopieren Sie ihn aus einer anderen Datei und fügen ihn dann <b>unbedingt</b> mittels des Buttons <b>'Paste as plain Text'</b> ein.</p><p>\n"
+"Markieren Sie Wörter, die verborgen werden sollen und klicken Sie dann auf den Button <i>Wort verbergen/anzeigen</p>."
 
 #: exe/engine/field.py:2725
 msgid "<p>If left unchecked a small number of spelling and capitalization errors will be accepted. If checked only an exact match in spelling and capitalization will be accepted.</p><p><strong>For example:</strong> If the correct answer is <code>Elephant</code> then both <code>elephant</code> and <code>Eliphant</code> will be judged <em>\"close enough\"</em> by the algorithm as it only has one letter wrong, even if \"Check Capitilization\" is on.</p><p>If capitalization checking is off in the above example, the lowercase <code>e</code> will not be considered a mistake and <code>eliphant</code> will also be accepted.</p><p>If both \"Strict Marking\" and \"Check Capitalization\" are set, the only correct answer is \"Elephant\". If only \"Strict Marking\" is checked and \"Check Capitalization\" is not, \"elephant\" will also be accepted.</p>"
@@ -1394,7 +1394,7 @@ msgstr "OK"
 #: exe/engine/idevicestore.py:329 exe/engine/idevicestore.py:338
 #: exe/engine/idevicestore.py:435 exe/engine/idevicestore.py:444
 msgid "Objectives"
-msgstr "Ziele"
+msgstr "Beabsichtigte Lernziele"
 
 #: exe/engine/idevicestore.py:332 exe/engine/idevicestore.py:438
 msgid ""
@@ -1518,7 +1518,7 @@ msgstr "Wikipedia Artikel (Portugisisch)"
 #: exe/engine/idevicestore.py:342 exe/engine/idevicestore.py:352
 #: exe/engine/idevicestore.py:448 exe/engine/idevicestore.py:458
 msgid "Preknowledge"
-msgstr "Vorwissen"
+msgstr "Benötigtes Vorwissen"
 
 #: exe/engine/idevicestore.py:345 exe/engine/idevicestore.py:451
 msgid ""

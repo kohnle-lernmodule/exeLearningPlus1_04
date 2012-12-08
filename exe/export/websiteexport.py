@@ -150,8 +150,8 @@ class WebsiteExport(object):
         # copy the package's resource files
         package.resourceDir.copyfiles(outputDir)
             
-        # copy script files.
-        self.scriptsDir.copylist(('libot_drag.js', 'common.js'), 
+        # copy script files. - with modification by lernmodule.net
+        self.scriptsDir.copylist(('libot_drag.js', 'common.js', 'lernmodule_net.js'), 
                                   outputDir)
         
         # copy players for media idevices.                

@@ -92,8 +92,8 @@ class SinglePageExport(object):
         # copy the package's resource files
         package.resourceDir.copyfiles(self.outputDir)
 
-        # copy script files.
-        self.scriptsDir.copylist(('libot_drag.js', 'common.js'), 
+        # copy script files. - modification by lernmodule.net
+        self.scriptsDir.copylist(('libot_drag.js', 'common.js','lernmodule_net.js'), 
                                      self.outputDir)
 	
 	# copy players for media idevices.                

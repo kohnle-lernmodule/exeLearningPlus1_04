@@ -137,6 +137,14 @@ class IdeviceStore:
         from exe.engine.flashmovieidevice     import FlashMovieIdevice
         from exe.engine.quiztestidevice       import QuizTestIdevice
 
+		#modifications by lernmodule.net
+		#changed: clozeidevice
+		#next 3 idevices inserted
+        from exe.engine.scormdropdownidevice    import ScormDropDownIdevice
+        from exe.engine.scormclozeidevice       import ScormClozeIdevice
+        from exe.engine.scormmultiselectidevice import ScormMultiSelectIdevice
+		#end modifications
+		
         self.extended.append(FreeTextIdevice())
         
 
@@ -169,8 +177,15 @@ class IdeviceStore:
         self.extended.append(MultiSelectIdevice())
         self.extended.append(AppletIdevice())
         self.extended.append(FlashMovieIdevice())
-        self.extended.append(QuizTestIdevice())
-
+        
+		#modifications by lernmodule.net
+		#self.extended.append(QuizTestIdevice())
+        self.extended.append(ScormDropDownIdevice())
+        self.extended.append(ScormClozeIdevice())
+        self.extended.append(ScormMultiSelectIdevice())
+		#end modifications
+		
+		
         # generate new ids for these iDevices, to avoid any clashes
         for idevice in self.extended:
             idevice.id = self.getNewIdeviceId()
@@ -325,7 +340,7 @@ or as a starting point for further analysis of the reading by posing a question
 or providing a statement to begin a debate.""")))
 
         self.generic.append(readingAct)
-    
+
         objectives = GenericIdevice(_(u"Objectives"), 
                                     u"objectives",
                                     _(u"University of Auckland"), 

@@ -184,7 +184,6 @@ this.parentNode to do auto updates of just this field (and any siblings) if you 
     <tabs align="end" pack="end">
         <tab id="tabPackage" label="Package"/>
         <tab id="tabMetadata" label="Metadata"/>
-        <tab id="tabExport" label="Export"/>
     </tabs>
     <tabpanels flex="1">
         <tabpanel>
@@ -192,9 +191,6 @@ this.parentNode to do auto updates of just this field (and any siblings) if you 
         </tabpanel>
         <tabpanel id="metadata">
             <vbox id="dublinCore" />
-        </tabpanel>
-        <tabpanel id="export">
-            <vbox id="exportProperties" />
         </tabpanel>
     </tabpanels>
   </tabbox>

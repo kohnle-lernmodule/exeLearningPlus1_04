@@ -4,7 +4,7 @@
 nsis_options = ''
 
 # if makensis.exe is not in your PATH, specify explicit pathname here
-nsis = 'c:\Program Files\NSIS\makensis.exe'
+nsis = 'c:\Programme\NSIS\makensis.exe'
 
 # name used for temporary file that contains branded splash screen
 BRANDED_JPG = 'splashb.jpg'
@@ -18,13 +18,16 @@ import Image, ImageFont, ImageDraw
 # clean out the build and dist dirs
 os.chdir('../..'); WDIR = os.getcwd()
 shutil.rmtree('build', True)
+os.makedirs('build')
 shutil.rmtree('dist', True)
-
+os.makedirs('dist')
 # copy Firefox into the dist tree
 shutil.copytree('exe/webui/Mozilla Firefox', 'dist/Mozilla Firefox')
 
+
 # build the executable
-subprocess.check_call('python win-setup.py py2exe', shell = True, cwd = WDIR)
+#subprocess.check_call('python win-setup.py py2exe', shell = True, cwd = WDIR)
+subprocess.call('c:\python24\python win-setup.py py2exe', shell = True, cwd = WDIR)
 
 # get the version
 sys.path.insert(0, WDIR)

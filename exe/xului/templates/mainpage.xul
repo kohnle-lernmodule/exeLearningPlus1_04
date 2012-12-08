@@ -3,7 +3,7 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns:n="http://nevow.com/ns/nevow/0.1"
-        id="mainWindow" title="exelearning"
+        id="mainWindow" title="eXelearningPlus"
 	onload="initWindow()"
 	width="640"
 	height="480"
@@ -97,13 +97,26 @@
             </menu>
            <menu n:render="translate" id="help-menu" label="Help" accesskey="h">
               <menupopup id="help-popup">
+		<!-- removed by lernmodule.net
 		<menuitem n:render="translate" label="eXe Tutorial" accesskey="u" oncommand="fileOpenTutorial()"/>
 		<menuitem n:render="translate" label="eXe Manual" accesskey="m" oncommand="browseURL('file://%s/docs/manual/Online_manual.html')"/>
 		<menuitem n:render="translate" label="Release Notes" accesskey="n" oncommand="browseURL('file://%t')"/>
+		-->
+		<!-- added by lernmodule.net -->
+		<menuitem n:render="translate" label="Handbuch" accesskey="m" oncommand="openManual()"/>
+		<menuitem n:render="translate" label="Tipps und Tricks" accesskey="t" oncommand="openTips()"/>
+		<menuitem n:render="translate" label="Release Notes" accesskey="n" oncommand="versionPage()"/>
+
 		<menuseparator/>
                 <!-- <menuitem n:render="translate" label="Register Online" accesskey="R" oncommand="registerOnline()"/> -->
+		<!-- removed by lernmodule.net
 		<menuitem n:render="translate" label="eXe Web Site" accesskey="w" oncommand="browseURL('http://exelearning.org/')"/>
 		<menuitem n:render="translate" label="Report an Issue" accesskey="r" oncommand="browseURL('http://exelearning.org/issue.php')"/>
+		-->
+		<!-- added by lernmodule.net -->
+		<menuitem n:render="translate" label="Bericht erstellen" accesskey="r" oncommand="openReport()"/>
+
+		
 		<menuitem n:render="translate" label="eXe Live Chat" accesskey="c" oncommand="browseURL('http://exelearning.org/irc.php')"/>
                 <menuseparator/>
                 <menuitem n:render="translate" label="About eXe" accesskey="a" oncommand="aboutPage()"/>

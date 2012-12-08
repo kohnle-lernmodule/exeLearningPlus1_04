@@ -2,7 +2,7 @@
 // eXe
 // Copyright 2004-2005, University of Auckland
 // Copyright 2004-2007 eXe Project, New Zealand Tertiary Education Commission
-//
+// Copyright 2009 lernmodule.net http://www.lernmodule.net
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License, or
@@ -379,6 +379,8 @@ function fileOpen2() {
         nevow_clientToServerEvent('loadPackage', this, '', fp.file.path)
     }
 }
+/*
+removed by lernmodule.net
 
 // Opens the tutorial document
 function fileOpenTutorial() {
@@ -390,7 +392,7 @@ function fileOpenTutorial() {
 function fileOpenTutorial2() {
     nevow_clientToServerEvent('loadTutorial', this, '')
 }
-
+*/
 
 // Opens a recent document
 function fileOpenRecent(number) {
@@ -672,4 +674,493 @@ function extractPackage() {
         nevow_clientToServerEvent('extractPackage', this, '', fp.file.path, res == nsIFilePicker.returnReplace)
     }
 }
+
+//added by lernmodule.net
+
+
+function openManual(){
+	var features = "width=1000,height=700,resizable=0,left=0,top=0,status=yes,resizeable=yes,scrollbars=yes", myWin;
+    myWin = window.open ("http://www.exelearningplus.de/?eXelearningPlus:Handbuch", "Handbuch", features);
+}
+
+function openTips(){
+	var features = "width=1000,height=700,resizable=0,left=0,top=0,status=yes,resizeable=yes,scrollbars=yes", myWin;
+    myWin = window.open ("http://www.exelearningplus.de/?eXelearningPlus:Tipps", "Tipps", features);
+}
+
+function openReport(){
+	var features = "width=1000,height=700,resizable=0,left=0,top=0,status=yes,resizeable=yes,scrollbars=yes", myWin;
+    myWin = window.open ("http://www.exelearningplus.de/?eXelearningPlus:Bericht", "Bericht", features);
+}
+
+
+function versionPage(){
+	var xoptions="width=700,height=745,status=0,resizable=1,left=200,top=0,scrollbars=1";
+	var xname = "versioninfo";
+	var subtree = "";
+subtree +='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">\n';
+subtree +='<html>\n';
+subtree +='<head>\n';
+subtree +='</head>\n';
+subtree +='\n';
+subtree +='<body>\n';
+subtree +='<pre>\n';
+subtree +='Version 1.04 Plus\n'
+subtree +='* Added SCORM dropdown, SCORM cloze and SCORM multiple choice Tests\n';
+subtree +='* Tested with Ilias and Moodle\n';
+subtree +='* Supports Geogebra 3.2\n';
+subtree +='* Cloze activity may contain whitespaces\n';
+subtree +='===========================================================================\n';
+subtree +='Copyright 2009, lernmodule.net gGmbH\n';
+subtree +='Durlacher Str. 22, 76356 Weingarten, Germany\n';
+subtree +='\n';
+subtree +='The eXelearningPlus Extensions are Open Source; you can redistribute the\n';
+subtree +='software under the terms of the GNU General Public License, Version 2, as\n';
+subtree +='published by the Free Software Foundation. The software is free to use,\n';
+subtree +='but only if a link to exelearningplus.de is kept visible on the pages using\n';
+subtree +='the eXelearningPlus Extensions. If you want to remove or hide this feature\n';
+subtree +='from your pages, you have to get a permission by lernmodule.net.\n';
+subtree +='Please contact.\n';
+subtree +='\n';
+subtree +='This program is distributed in the hope that it will be useful,\n';
+subtree +='but WITHOUT ANY WARRANTY; without even the implied warranty of\n';
+subtree +='MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n';
+subtree +='GNU General Public License for more details.\n';
+subtree +='\n';
+subtree +='You should have received a copy of the GNU General Public License\n';
+subtree +='along with this program; if not, write to the Free Software\n';
+subtree +='Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n';
+subtree +='===========================================================================\n';
+subtree +='\n';
+subtree +="* Add username to startup lock file to permit multiple users on same machine\n"
++"* Fix image gallery to allow captions containing apostrophes\n"
++"* Fix field IDs so that adding to a previously saved elp is consistent\n"
++"* Fix Common Cartridge manifest when a header image is used\n"
++"* Fix OS X and Linux configDir Firefox profile on filesystem without colon\n"
++"* Fix display of translated help for Multi-Select iDevice editing\n"
++"* Workaround AVG anti-virus adding itself to eXe Firefox on Windows\n"
++"* Make startup lock file parsing more robust\n"
++"* Only include a copy of GNU FDL if that is the license selected\n"
++"* Re-enable loading of user extended iDevices from config directory\n"
++"* Translation updates\n"
++"\n"
++"Version 1.04 (r3532) 2008-05-09\n"
++"* Add offline snapshot of manual, release notes, and tutorial to Help menu\n"
++"* Add undo button to discard changes after editing\n"
++"* Add automatic auto_top anchors to facilitate internal linking to each node\n"
++"* Add ability to translate tooltips\n"
++"* Fix handling of multi-select questions with 10 or more options\n"
++"* Fix tip display at right edge of windows\n"
++"* Fix Common Cartridge resource references\n"
++"* Fix package property display with Firefox 3.0 (no properties translations)\n"
++"* Improve Common Cartridge metadata formation\n"
++"* Improve Wiki Article iDevice handling of pages without content div\n"
++"* Improve Firefox version detection for 3.0b series (Linux)\n"
++"* Remove CSS letter-spacing to improve rendering with some fonts (Khmer)\n"
++"* Prototype ability to load eXe-authored Common Cartridges\n"
++"* Automate building Debian changelog and versioning\n"
++"* Update to BeautifulSoup 3.0.6 (character coding detection issues)\n"
++"* Translation updates and additions\n"
++"\n"
++"Version 1.03 (r3373) 2008-01-21\n"
++"* Add linking across pages within a package (only for web export)\n"
++"* Add note that SCORM export previous/next requires non-standard extension\n"
++"* Add prototype IMS Common Cartridge export (no quizzing)\n"
++"* Add Rel-License microformat to license urls in exported content\n"
++"* Make importing old packages more robust (and remove unused resources)\n"
++"* Fix merging packages that contain resources with same name as main package\n"
++"* Fix upgrading of multichoice questions\n"
++"* Fix escaping of ampersands in rich text fields, allowing HTML embedding\n"
++"* Fix embedding of images and media with '#' in name\n"
++"* Fix SCORM Quiz pass rate to signal pass for scores of exactly the rate\n"
++"* Update to BeautifulSoup 3.0.5\n"
++"* Translation updates\n"
++"\n"
++"Version 1.02 (r3303) 2007-10-01\n"
++"* Add ability to type resource name into url box (without browse button)\n"
++"* Add CSS divs around nodes in single page and print exports for pagination\n"
++"* Add detailed uninstall name, links, icon for Windows\n"
++"* Make reading very old eXe packages more robust if corruption encountered\n"
++"* Fix XHTML for div wrapper of Java Applet iDevice export\n"
++"* Add ID, TH translations\n"
++"\n"
++"Version 1.01 (r3265) 2007-09-05\n"
++"* Add embedded MP3 player as a rich text editor media type\n"
++"* Add FLV player as rich text editor media type\n"
++"* Add DIV around each iDevice on web/ims/scorm export\n"
++"* Add disabling SUBMIT ANSWERS button in SCORM Quiz after first submission\n"
++"* Fix web folder export to convert filenames to safe ASCII characters\n"
++"* Fix iPod Notes export to write UTF-8 index (non-ASCII node names)\n"
++"* Fix XHTML generated for SCORM Quiz\n"
++"* Fix XHTML generated for True-False question feedback\n"
++"* Fix reading of exe.conf files that have UTF-8 \"byte order mark\"\n"
++"* Fix insertion of non-ASCII package names in Recent Projects list\n"
++"* Change license footer text so translators can ignore trailing space\n"
++"* Change RPM spec file to work better with openSUSE\n"
++"* Remove deprecated dublincore.xml metadata file from SCORM 1.2 packages\n"
++"* Updated DE,FR,IT,PL translations\n"
++"\n"
++"Version 1.00 (r3219) 2007-08-17\n"
++"* Fix styles to use relative line height rather than absolute\n"
++"* Fix splash progress bar to indicate 100%\n"
++"* Fix iDevice deletion issues including read-only resources\n"
++"* Fix display of embedded image borders\n"
++"* Fix header text display in single page export and printing\n"
++"* Make merging packages more robust\n"
++"* Make default IMS/SCORM Metadata title description from package values\n"
++"* Change export to folder to not change UTF-8 filenames\n"
++"* Update About box\n";
+subtree +='\n';
+subtree +='For older versions and support see <a href="http://exelearning.org/Release_Notes">http://exelearning.org/Release_Notes</a>\n'
+subtree +='=========================================\n';
+subtree +='    eXe: The eLearning XHML editor\n';
+subtree +='=========================================\n';
+subtree +='$Revision$\n';
+subtree +='$Date$\n';
+subtree +='\n';
+subtree +='===========================================================================\n';
+subtree +='Copyright 2004-2005, University of Auckland\n';
+subtree +='Copyright 2004-2008 eXe Project, http://exelearning.org/\n';
+subtree +='All rights reserved, see COPYING for details.\n';
+subtree +='\n';
+subtree +='This program is free software; you can redistribute it and/or modify\n';
+subtree +='it under the terms of the GNU General Public License as published by\n';
+subtree +='the Free Software Foundation; either version 2 of the License, or\n';
+subtree +='(at your option) any later version.\n';
+subtree +='\n';
+subtree +='This program is distributed in the hope that it will be useful,\n';
+subtree +='but WITHOUT ANY WARRANTY; without even the implied warranty of\n';
+subtree +='MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n';
+subtree +='GNU General Public License for more details.\n';
+subtree +='\n';
+subtree +='You should have received a copy of the GNU General Public License\n';
+subtree +='along with this program; if not, write to the Free Software\n';
+subtree +='Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n';
+subtree +='===========================================================================\n';
+subtree +='BUILDING FROM SOURCE\n';
+subtree +='====================\n';
+subtree +='\n';
+subtree +='Please see http://eXeLearning.org/BuildingFromSource for information\n';
+subtree +='on obtaining and building eXe and its dependencies.\n';
+subtree +='\n';
+subtree +='\n';
+subtree +='CREDITS\n';
+subtree +='=======\n';
+subtree +='\n';
+subtree +=' * Secret Labs AB and Fredrik Lundh for The Python Imaging Library (PIL) \n';
+subtree +='\n';
+subtree +='The Python Imaging Library (PIL) is\n';
+subtree +='\n';
+subtree +='    Copyright 1997-2005 by Secret Labs AB\n';
+subtree +='    Copyright 1995-2005 by Fredrik Lundh\n';
+subtree +='\n';
+subtree +='By obtaining, using, and/or copying this software and/or its associated\n';
+subtree +='documentation, you agree that you have read, understood, and will comply\n';
+subtree +='with the following terms and conditions:\n';
+subtree +='\n';
+subtree +='Permission to use, copy, modify, and distribute this software and its\n';
+subtree +='associated documentation for any purpose and without fee is hereby\n';
+subtree +='granted, provided that the above copyright notice appears in all copies,\n';
+subtree +='and that both that copyright notice and this permission notice appear in\n';
+subtree +='supporting documentation, and that the name of Secret Labs AB or the\n';
+subtree +='author not be used in advertising or publicity pertaining to\n';
+subtree +='distribution of the software without specific, written prior permission.\n';
+subtree +='\n';
+subtree +='SECRET LABS AB AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO\n';
+subtree +='THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND\n';
+subtree +='FITNESS. IN NO EVENT SHALL SECRET LABS AB OR THE AUTHOR BE LIABLE FOR\n';
+subtree +='ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER\n';
+subtree +='RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF\n';
+subtree +='CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN\n';
+subtree +='CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n';
+subtree +='\n';
+subtree +='\n';
+subtree +=' * CTC for APIWrapper.js and SCOFunctions.js\n';
+subtree +='\n';
+subtree +='Concurrent Technologies Corporation (CTC) grants you ("Licensee") a non-\n';
+subtree +='exclusive, royalty free, license to use, modify and redistribute this\n';
+subtree +='software in source and binary code form, provided that i) this copyright\n';
+subtree +='notice and license appear on all copies of the software; and ii) Licensee does\n';
+subtree +='not utilize the software in a manner which is disparaging to CTC.\n';
+subtree +='\n';
+subtree +='This software is provided "AS IS," without a warranty of any kind.  ALL\n';
+subtree +='EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY\n';
+subtree +='IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-\n';
+subtree +='INFRINGEMENT, ARE HEREBY EXCLUDED.  CTC AND ITS LICENSORS SHALL NOT BE LIABLE\n';
+subtree +='FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR\n';
+subtree +='DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES.  IN NO EVENT WILL CTC  OR ITS\n';
+subtree +='LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR DIRECT,\n';
+subtree +='INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER\n';
+subtree +='CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF THE USE OF\n';
+subtree +='OR INABILITY TO USE SOFTWARE, EVEN IF CTC  HAS BEEN ADVISED OF THE POSSIBILITY\n';
+subtree +='OF SUCH DAMAGES.\n';
+subtree +='\n';
+subtree +=' * Mozilla for XUL and the XPFE\n';
+subtree +='\n';
+subtree +='Version: NPL 1.1/GPL 2.0/LGPL 2.1\n';
+subtree +='\n';
+subtree +='The contents of this file are subject to the Netscape Public License\n';
+subtree +='Version 1.1 (the "License"); you may not use this file except in\n';
+subtree +='compliance with the License. You may obtain a copy of the License at\n';
+subtree +='http://www.mozilla.org/NPL/\n';
+subtree +='\n';
+subtree +='Software distributed under the License is distributed on an "AS IS" basis,\n';
+subtree +='WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n';
+subtree +='for the specific language governing rights and limitations under the\n';
+subtree +='License.\n';
+subtree +='\n';
+subtree +='The Original Code is mozilla.org code.\n';
+subtree +='\n';
+subtree +='The Initial Developer of the Original Code is \n';
+subtree +='Netscape Communications Corporation.\n';
+subtree +='Portions created by the Initial Developer are Copyright (C) 1998\n';
+subtree +='the Initial Developer. All Rights Reserved.\n';
+subtree +='\n';
+subtree +=' * Fabricio Zuardi for XSPF Web Music Player mp3 player\n';
+subtree +='\n';
+subtree +='Music Player is Open Source Software, licensed under the BSD and can be used \n';
+subtree +='and modified by anyone, including for commercial purposes.\n';
+subtree +='\n';
+subtree +='XSPF Web Music Player is a flash-based web application that uses xspf playlist\n';
+subtree +='format to play mp3 songs. XSPF is the XML Shareable Playlist Format. The \n';
+subtree +='software is written in Actionscript 2.\n';
+subtree +='\n';
+subtree +='For more information on XSPF, see: http://musicplayer.sourceforge.net/\n';
+subtree +='\n';
+subtree +=' * Anssi Piirainen for FlowPlayer FLV video player\n';
+subtree +='\n';
+subtree +='FlowPlayer is a free Flash video player. \n';
+subtree +='License: Apache License V2.0 \n';
+subtree +='\n';
+subtree +='For more information on FlowPlayer, see: http://flowplayer.org/\n';
+subtree +='\n';
+subtree +=' * John Forkosh Associates, Inc. for mimeTeX \n';
+subtree +='\n';
+subtree +='mimeTeX is distributed under the terms of the GNU General Public License.\n';
+subtree +='http://www.gnu.org/licenses/gpl.html\n';
+subtree +='\n';
+subtree +='The complete source code is available from http://www.forkosh.com/mimetex.zip\n';
+subtree +='\n';
+subtree +='Contributor(s):\n';
+subtree +='\n';
+subtree +='Alternatively, the contents of this file may be used under the terms of\n';
+subtree +='either the GNU General Public License Version 2 or later (the "GPL"), or \n';
+subtree +='the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),\n';
+subtree +='in which case the provisions of the GPL or the LGPL are applicable instead\n';
+subtree +='of those above. If you wish to allow use of your version of this file only\n';
+subtree +='under the terms of either the GPL or the LGPL, and not to allow others to\n';
+subtree +='use your version of this file under the terms of the NPL, indicate your\n';
+subtree +='decision by deleting the provisions above and replace them with the notice\n';
+subtree +='and other provisions required by the GPL or the LGPL. If you do not delete\n';
+subtree +='the provisions above, a recipient may use your version of this file under\n';
+subtree +='the terms of any one of the NPL, the GPL or the LGPL.\n';
+subtree +='\n';
+subtree +=' * Mark Pilgrim for Universal Feed Parser\n';
+subtree +='\n';
+subtree +='Copyright (c) 2002-2006, Mark Pilgrim, All rights reserved.\n';
+subtree +='\n';
+subtree +='Redistribution and use in source and binary forms, with or without modification,\n';
+subtree +='are permitted provided that the following conditions are met:\n';
+subtree +='\n';
+subtree +='* Redistributions of source code must retain the above copyright notice,\n';
+subtree +='  this list of conditions and the following disclaimer.\n';
+subtree +='* Redistributions in binary form must reproduce the above copyright notice,\n';
+subtree +='  this list of conditions and the following disclaimer in the documentation\n';
+subtree +='  and/or other materials provided with the distribution.\n';
+subtree +='\n';
+subtree +="THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS'\n";
+subtree +='AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n';
+subtree +='IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n';
+subtree +='ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE\n';
+subtree +='LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\n';
+subtree +='CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\n';
+subtree +='SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\n';
+subtree +='INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\n';
+subtree +='CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\n';
+subtree +='ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n';
+subtree +='POSSIBILITY OF SUCH DAMAGE.\n';
+subtree +='\n';
+subtree +=' * Beautiful Soup is Copyright (c) 2004-2007, Leonard Richardson\n';
+subtree +='\n';
+subtree +='All rights reserved.\n';
+subtree +='\n';
+subtree +='Redistribution and use in source and binary forms, with or without\n';
+subtree +='modification, are permitted provided that the following conditions are\n';
+subtree +='met:\n';
+subtree +='\n';
+subtree +='  * Redistributions of source code must retain the above copyright\n';
+subtree +='    notice, this list of conditions and the following disclaimer.\n';
+subtree +='\n';
+subtree +='  * Redistributions in binary form must reproduce the above\n';
+subtree +='    copyright notice, this list of conditions and the following\n';
+subtree +='    disclaimer in the documentation and/or other materials provided\n';
+subtree +='    with the distribution.\n';
+subtree +='\n';
+subtree +='  * Neither the name of the the Beautiful Soup Consortium and All\n';
+subtree +='    Night Kosher Bakery nor the names of its contributors may be\n';
+subtree +='    used to endorse or promote products derived from this software\n';
+subtree +='    without specific prior written permission.\n';
+subtree +='\n';
+subtree +='THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n';
+subtree +='"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n';
+subtree +='LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n';
+subtree +='A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR\n';
+subtree +='CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\n';
+subtree +='EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,\n';
+subtree +='PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR\n';
+subtree +='PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF\n';
+subtree +='LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\n';
+subtree +='NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n';
+subtree +='SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE, DAMMIT.\n';
+subtree +='\n';
+subtree +=' * XSPF Web Music Player 0.2.3 is Copyright (c) 2005, Fabricio Zuardi\n';
+subtree +='\n';
+subtree +='Copyright (c) 2005, Fabricio Zuardi\n';
+subtree +='All rights reserved.\n';
+subtree +='\n';
+subtree +='Redistribution and use in source and binary forms, with or without\n';
+subtree +='modification, are permitted provided that the following conditions are\n';
+subtree +='met:\n';
+subtree +='\n';
+subtree +='  * Redistributions of source code must retain the above copyright\n';
+subtree +='    notice, this list of conditions and the following disclaimer.\n';
+subtree +='  * Redistributions in binary form must reproduce the above copyright\n';
+subtree +='    notice, this list of conditions and the following disclaimer in the\n';
+subtree +='    documentation and/or other materials provided with the distribution.\n';
+subtree +='  * Neither the name of the author nor the names of its contributors\n';
+subtree +='    may be used to endorse or promote products derived from this software\n';
+subtree +='    without specific prior written permission.\n';
+subtree +='\n';
+subtree +='THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS\n';
+subtree +='IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED\n';
+subtree +='TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A\n';
+subtree +='PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER\n';
+subtree +='OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\n';
+subtree +='EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,\n';
+subtree +='PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR\n';
+subtree +='PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF\n';
+subtree +='LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\n';
+subtree +='NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n';
+subtree +='SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n';
+subtree +='\n';
+subtree +=' * GeoGebra is Copyright 2001-2008 Geogebra Inc.\n';
+subtree +='\n';
+subtree +='GeoGebra is a free and multi-platform dynamic mathematics software for\n';
+subtree +='schools that joins geometry, algebra, and calculus.  The application\n';
+subtree +='used is licensed under the GNU General Public License.  (See the COPYING\n';
+subtree +='file.)\n';
+subtree +='\n';
+subtree +='More information about GeoGebra and the source code are available from\n';
+subtree +='http://www.geogebra.org/\n';
+subtree +='\n';
+subtree +=' * Twisted Python 2.2.0 is Copyright (c) 2001-2005\n';
+subtree +='Allen Short\n';
+subtree +='Andrew Bennetts\n';
+subtree +='Apple Computer, Inc.\n';
+subtree +='Benjamin Bruheim\n';
+subtree +='Bob Ippolito\n';
+subtree +='Canonical Limited\n';
+subtree +='Christopher Armstrong\n';
+subtree +='Donovan Preston\n';
+subtree +='Eric Mangold\n';
+subtree +='Itamar Shtull-Trauring\n';
+subtree +='James Knight\n';
+subtree +='Jason A. Mobarak\n';
+subtree +='Jonathan Lange\n';
+subtree +='Jonathan D. Simms\n';
+subtree +='Jp Calderone\n';
+subtree +='J######Hermann\n';
+subtree +='Kevin Turner\n';
+subtree +='Mary Gardiner\n';
+subtree +='Matthew Lefkowitz\n';
+subtree +='Massachusetts Institute of Technology\n';
+subtree +='Moshe Zadka\n';
+subtree +='Paul Swartz\n';
+subtree +='Pavel Pergamenshchik\n';
+subtree +='Sean Riley\n';
+subtree +='Travis B. Hartwell\n';
+subtree +='\n';
+subtree +='Permission is hereby granted, free of charge, to any person obtaining\n';
+subtree +='a copy of this software and associated documentation files (the\n';
+subtree +='"Software"), to deal in the Software without restriction, including\n';
+subtree +='without limitation the rights to use, copy, modify, merge, publish,\n';
+subtree +='distribute, sublicense, and/or sell copies of the Software, and to\n';
+subtree +='permit persons to whom the Software is furnished to do so, subject to\n';
+subtree +='the following conditions:\n';
+subtree +='\n';
+subtree +='The above copyright notice and this permission notice shall be\n';
+subtree +='included in all copies or substantial portions of the Software.\n';
+subtree +='\n';
+subtree +='THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,\n';
+subtree +='EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n';
+subtree +='MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n';
+subtree +='NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\n';
+subtree +='LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n';
+subtree +='OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\n';
+subtree +='WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n';
+subtree +='\n';
+subtree +=' * Nevow 0.4.1 is Copyright (c) 2004\n';
+subtree +='Donovan Preston\n';
+subtree +='Matt Goodall\n';
+subtree +='James Y. Knight\n';
+subtree +='Glyph Lefkowitz\n';
+subtree +='JP Calderone\n';
+subtree +='Allen Short\n';
+subtree +='Alex Levy\n';
+subtree +='Justin Johnson\n';
+subtree +='Christopher Armstrong\n';
+subtree +='Jonathan Simms\n';
+subtree +='Phil Frost\n';
+subtree +='Tommi Virtanen\n';
+subtree +='Michal Pasternak\n';
+subtree +='Valentino Volonghi\n';
+subtree +='\n';
+subtree +='\n';
+subtree +='Permission is hereby granted, free of charge, to any person obtaining\n';
+subtree +='a copy of this software and associated documentation files (the\n';
+subtree +='"Software"), to deal in the Software without restriction, including\n';
+subtree +='without limitation the rights to use, copy, modify, merge, publish,\n';
+subtree +='distribute, sublicense, and/or sell copies of the Software, and to\n';
+subtree +='permit persons to whom the Software is furnished to do so, subject to\n';
+subtree +='the following conditions:\n';
+subtree +='\n';
+subtree +='The above copyright notice and this permission notice shall be\n';
+subtree +='included in all copies or substantial portions of the Software.\n';
+subtree +='\n';
+subtree +='THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,\n';
+subtree +='EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n';
+subtree +='MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n';
+subtree +='NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\n';
+subtree +='LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n';
+subtree +='OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\n';
+subtree +='WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n';
+subtree +='\n';
+subtree +=' * Magnifier was developed for eXe by Bruce Webster\n';
+subtree +='An archive containing the associated files can be download from\n';
+subtree +='http://zebo.org/magnify/\n';
+subtree +='\n';
+subtree +=' * iPod is a trademark of Apple Inc.\n';
+subtree +='\n';
+subtree +=' * Wingware generously donated licenses for the Wing Python IDE to developers working on eXe.\n';
+subtree +='\n';
+subtree +='</pre>\n';
+subtree +='</body>\n';
+subtree +='</html>\n';
+	newWindow(xname, subtree, xoptions);
+}
+
+function newWindow(name, content, options)
+{
+	var xwindow = window.open("", name, options);
+	if (xwindow != null)
+	{
+		xwindow.document.open();
+		xwindow.document.write(content);
+		xwindow.document.close();
+	}
+	return xwindow;
+}
+
+//end added
+
 
